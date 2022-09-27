@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/edit/{id}',[RegisteredUserController::class,'edit']);
+Route::PUT('/{id}/update',[RegisteredUserController::class,'update']);
+
+//articles
+Route::get('/edit/{id}',[ArticlesController::class,'edit']);
+Route::PUT('/{id}/update',[ArticlesController::class,'update']);

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreArticlesRequest;
 use App\Http\Requests\UpdateArticlesRequest;
 use App\Models\Avatar;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
@@ -60,9 +61,11 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Articles $articles)
+    public function edit( $id)
     {
-        //
+
+        $articles = Articles::find($id);
+        return view('articles.edit', compact('articles'));
     }
 
     /**
@@ -72,9 +75,13 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticlesRequest $request, Articles $articles)
+    public function update(Request $request, $id)
     {
-        //
+        $articles = Articles::find($id);
+        $articles->title = $request->title;
+        $articles->text = $request->text;
+        $articles->save();
+        return redirect()->back();
     }
 
     /**

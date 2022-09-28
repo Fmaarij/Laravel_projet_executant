@@ -90,8 +90,10 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articles $articles)
+    public function destroy($id)
     {
-        //
+        $articles = Articles::find($id);
+        $articles->delete();
+        return redirect()->back();
     }
 }

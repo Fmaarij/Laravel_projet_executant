@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div
-        class="relative items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <div class="relative items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
@@ -53,11 +52,26 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $article->title }}</h5>
                                 <p class="card-text">{{ $article->text }} </p>
-                                <div class="text-center mt-3">
-                                    <button class="btn btn-primary">
-                                        <a href="/edit/{{$article->id}}">Edit</a>
-                                    </button>
+                                @auth
+
+
+                                <div class="text-center mt-3 d-flex justify-between" >
+                                    <div class="">
+                                        <button class="btn btn-primary">
+                                            <a href="/editarticles/{{ $article->id }}">Edit</a>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <form action="/{{ $article->id }}/deletearticle" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+
                                 </div>
+                                @endauth
+
                             </div>
                         </div>
                     @endforeach

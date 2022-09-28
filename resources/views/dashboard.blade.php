@@ -17,7 +17,7 @@
                             <p class="card-text">{{ Auth::user()->email }}</p>
                             <p>Role : <span class="text-success">{{ Auth::user()->role->role_name }}</span></p>
                             <button class="btn btn-success">
-                                <a href="/edit/{{Auth::user()->id}}">Edit</a>
+                                <a href="/edituser/{{Auth::user()->id}}">Edit</a>
                             </button>
                         </div>
                     </div>

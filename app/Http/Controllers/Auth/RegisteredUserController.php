@@ -20,6 +20,10 @@ class RegisteredUserController extends Controller {
     *
     * @return \Illuminate\View\View
     */
+    public function index(){
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
 
     public function create() {
         return view( 'auth.register' );
@@ -79,7 +83,13 @@ class RegisteredUserController extends Controller {
         $users->email = $request->email;
         $users->password = Hash::make( $request->password );
         $users->save();
-        
+
+        return redirect()->back();
+    }
+
+    public function destroy($id){
+        $users = User::find($id);
+        $users->delete();
         return redirect()->back();
     }
 }

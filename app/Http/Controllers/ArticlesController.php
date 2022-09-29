@@ -18,7 +18,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Articles::all();
+        $articles = Articles::paginate(4);
         // $users = User::all();
         return view('articles', compact('articles'));
     }

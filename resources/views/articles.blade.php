@@ -78,6 +78,10 @@
                 </div>
             </div>
         </div>
+        {{-- Paginattion --}}
+        <div class="d-flex justify-center">
+            {{$articles->links()}}
+        </div>
     </div>
 
 

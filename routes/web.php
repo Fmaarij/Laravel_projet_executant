@@ -3,6 +3,9 @@
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +52,22 @@ Route::get('/showavatar', [AvatarController::class,'show'])->name('showavatar');
 Route::get('/editavatar/{id}', [AvatarController::class,'edit'])->name('editavatar');
 Route::put('/{id}/updateavatar', [AvatarController::class,'update']);
 Route::delete('/{id}/delete', [AvatarController::class,'destroy']);
+
+// photos
+Route::get('/photos', [PhotoController::class,'index'])->name('photos');
+Route::get('/createphotos', [PhotoController::class,'create'])->name('createphotos');
+Route::post('/storephoto', [PhotoController::class,'store']);
+Route::get('/showphoto', [PhotoController::class,'show'])->name('showphoto');
+Route::get('/editphoto/{id}', [PhotoController::class,'edit']);
+Route::put('/{id}/updatephoto', [PhotoController::class,'update']);
+Route::delete('/photos', [PhotoController::class,'destroy']);
+
+//gallery
+Route::get('/gallery', [GalleryController::class,'index'])->name('gallery');
+
+//category
+Route::get('/category', [CategoryController::class,'index'])->name('category');
+Route::delete('/{id}/deletecategory',[CategoryController::class,'destroy']);
 
 require __DIR__.'/auth.php';
 

@@ -8,6 +8,11 @@
         <input type="text" name="avatar_name">
         <label for="">Image</label>
         <input type="file" name="img">
+        <span class=" btn-outline-danger">
+            {{-- @error
+            {{$message}}
+            @enderror --}}
+        </span>
         <button type="submit" class="btn btn-outline-primary"> Save </button>
     </form>
 </div>

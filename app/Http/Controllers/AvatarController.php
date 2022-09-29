@@ -39,12 +39,30 @@ class AvatarController extends Controller {
     */
 
     public function store( Request $request ) {
-        $avatars = new Avatar;
-        $avatars ->avatar_name = $request->avatar_name;
-        Storage::put( 'public/avatar/',  $request->file( 'img' ) );
-        $avatars->img = $request->file( 'img' )->hashName();
-        $avatars->save();
-        return redirect()->back();
+        $avatar = Avatar::all();
+        if (count($avatar)===5) {
+            //à revoir ça ne s'affiche pas dans le blade
+            return redirect()->back()->with('error','You can add only 5 avatars');
+        } else {
+            $avatars = new Avatar;
+            $avatars ->avatar_name = $request->avatar_name;
+            Storage::put( 'public/avatar/',  $request->file( 'img' ) );
+            $avatars->img = $request->file( 'img' )->hashName();
+            $avatars->save();
+            return redirect()->back();
+        }
+
+
+        // $request->validate([
+
+        //     'img' => 'required|numeric|numeric|min:1, |max:5'
+
+        // ],
+        // [
+        //     'img.required' => 'You can add only 5 avatars'
+        // ]);
+
+
     }
 
     /**

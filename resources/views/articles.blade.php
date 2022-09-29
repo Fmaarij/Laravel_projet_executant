@@ -52,7 +52,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $article->title }}</h5>
                                 <p class="card-text">{{ $article->text }} </p>
-                                @auth
+
+                                {{-- edit et delete articles --}}
+                                {{-- @auth
 
 
                                 <div class="text-center mt-3 d-flex justify-between" >
@@ -70,7 +72,7 @@
                                     </div>
 
                                 </div>
-                                @endauth
+                                @endauth --}}
 
                             </div>
                         </div>

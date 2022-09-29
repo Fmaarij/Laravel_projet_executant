@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -82,5 +83,11 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function telecharge($id){
+
+        $photos = Photo::find($id);
+        return Storage::download('public/photos/'.$photos->pic);
     }
 }

@@ -23,14 +23,14 @@
                             <td>{{ $user->age }}</td>
                             <td>{{ $user->role->role_name }}</td>
                             <td>
-                                <a href="/edituser/{{$user->id}}">
+                                <a href="/edituser/{{ $user->id }}">
                                     <button class="btn btn-outline-warning">
                                         Edit
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                <form action="/{{$user->id}}/deleteuser" method="post" enctype="multipart/form-data">
+                                <form action="/{{ $user->id }}/deleteuser" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-outline-danger">
@@ -44,5 +44,17 @@
                 </tbody>
             </tr>
         </table>
+
+        <hr>
+        <div class="mt-5 mb-5">
+                <a href="{{ url('createuser') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
+                    <button class="fs-5 btn btn-outline-primary">
+
+                        Add a user
+
+                    </button>
+                </a>
+            </h3>
+        </div>
     </div>
 @endsection

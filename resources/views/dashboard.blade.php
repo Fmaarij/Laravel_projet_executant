@@ -16,9 +16,11 @@
                             <h5 class="card-title">{{ Auth::user()->name }} | {{ Auth::user()->age }}</h5>
                             <p class="card-text">{{ Auth::user()->email }}</p>
                             <p>Role : <span class="text-success">{{ Auth::user()->role->role_name }}</span></p>
+                            @can('accessadmin')
                             <button class="btn btn-success">
                                 <a href="/edituser/{{Auth::user()->id}}">Edit</a>
                             </button>
+                            @endcan
                         </div>
                     </div>
                 </div>

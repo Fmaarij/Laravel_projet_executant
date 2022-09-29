@@ -38,6 +38,28 @@ class RegisteredUserController extends Controller {
     * @throws \Illuminate\Validation\ValidationException
     */
 
+    public function createuser(){
+        $roles = Role::all();
+        $avatars = Avatar::all();
+        $articles = Articles::all();
+        $users = User::all();
+        return view('users.create', compact('roles', 'avatars', 'articles','users'));
+    }
+
+    public function storeuser(Request $request){
+        $users = new User;
+        $users->name = $request->name;
+        $users->lastname = $request->lastname;
+        $users->age = $request->age;
+        $users->role_id = $request->role_id;
+        $users->avatar_id = $request->avatar_id;
+        $users->article_id = $request->article_id;
+        $users->email = $request->email;
+        $users->password = Hash::make( $request->password );
+        $users->save();
+        return redirect('users');
+    }
+
     public function store( Request $request ) {
         $request->validate( [
             'name' => [ 'required', 'string', 'max:255' ],

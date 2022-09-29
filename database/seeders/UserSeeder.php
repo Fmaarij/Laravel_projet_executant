@@ -57,7 +57,7 @@ class UserSeeder extends Seeder {
                 'lastname' => 'Daoud',
                 'age' => 23,
                 'role_id' =>2,
-                'avatar_id' =>4,
+                'avatar_id' =>5,
                 'article_id' =>4,
                 'email' =>'elias@gmail.com',
                 'password'=>bcrypt( 'elias@gmail.com' ),

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Avatar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,18 @@ class AvatarFactory extends Factory
      */
     public function definition()
     {
+        // $image = $this->faker->image(
+        //     dir:storage_path('app/public/avatar'),
+        //     width:640,
+        //     height:480,
+        //     fullPath:false,
+        // );
+
         return [
             'avatar_name' => $this->faker->lastName,
-            'img' => $this->faker->imageUrl
+            // 'img' => $this->faker->imageUrl
+            'img' => $this->faker->imageUrl()
         ];
+
     }
 }

@@ -20,11 +20,12 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    {{-- <img class="rounded-pill" width="20%" src="{{$avatar->img}}" alt="picture"> --}}
+                                    <img class="rounded-pill mb-2" width="30%" src="{{$avatar->img}}" class="img-fluid rounded-start" alt="picture">
                                     {{-- <img class="rounded-pill" width="20%" src="{{ asset('storage/avatar/' . $avatar->img) }}" --}}
-                                    <img class="rounded-pill mb-2" width="30%"
-                                        src="{{ asset('storage/avatar/' . $avatar->img) }}" class="img-fluid rounded-start"
-                                        alt="...">
+
+                                    {{-- <img class="rounded-pill mb-2" width="30%"
+                                        src="{{ asset('public/avatar/' . $avatar->img) }}" class="img-fluid rounded-start"
+                                        alt="..."> --}}
                                     <p class="card-text">
                                         <form action="/{{$avatar->id}}/deleteavatar" method="post" enctype="multipart/form-data">
                                             @csrf

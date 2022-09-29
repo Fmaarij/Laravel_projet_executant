@@ -39,9 +39,11 @@ Route::PUT('/{id}/updatearticle',[ArticlesController::class,'update']);
 Route::DELETE('/{id}/deletearticle',[ArticlesController::class,'destroy']);
 //users
 Route::get('/users', [RegisteredUserController::class,'index'])->name('users');
-Route::get('/edituser/{id}',[RegisteredUserController::class,'edit']);
+Route::get('/edituser/{id}',[RegisteredUserController::class,'edit'])->middleware(['adminrole']);
 Route::PUT('/{id}/updateuser',[RegisteredUserController::class,'update']);
 Route::DELETE('/{id}/deleteuser',[RegisteredUserController::class,'destroy']);
+
+
 
 
 //avatars

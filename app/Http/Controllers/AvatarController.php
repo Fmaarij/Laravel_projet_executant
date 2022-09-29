@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Avatar;
 use App\Http\Requests\StoreAvatarRequest;
 use App\Http\Requests\UpdateAvatarRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller {
+
+    public function __construct()
+    {
+        // $this->middleware('adminrole')->only('index')
+        // $this->middleware()->exept()
+        $this->middleware('adminrole');
+    }
     /**
     * Display a listing of the resource.
     *
@@ -119,6 +127,15 @@ class AvatarController extends Controller {
 
     public function destroy( $id) {
         $avatars = Avatar::find( $id );
+
+        $users = User::where('avatar_id','=',$id)->get();
+
+        foreach($users as $user){
+            // dd($user);
+            $user->avatar_id = 1;
+            $user->save();
+        }
+
         Storage::delete( 'public/avatar/'.$avatars->img );
         $avatars->delete();
         return redirect()->back();

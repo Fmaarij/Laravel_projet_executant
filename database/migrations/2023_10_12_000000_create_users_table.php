@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->integer('age');
-            $table->foreignId('role_id')->constrained()->onDelete('cascade');
-            $table->foreignId('avatar_id')->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->constrained();
+            $table->foreignId('avatar_id')->constrained();
             $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

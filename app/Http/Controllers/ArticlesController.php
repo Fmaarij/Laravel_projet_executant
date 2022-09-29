@@ -29,7 +29,7 @@ class ArticlesController extends Controller {
     */
 
     public function create() {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -39,8 +39,12 @@ class ArticlesController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function store( StoreArticlesRequest $request ) {
-        //
+    public function store( Request $request ) {
+        $articles = new Articles;
+        $articles->title = $request->title;
+        $articles->text = $request->text;
+        $articles->save();
+        return redirect('/');
     }
 
     /**

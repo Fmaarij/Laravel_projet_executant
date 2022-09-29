@@ -17,6 +17,15 @@
         @endif
         <div class="d-flex flew-direction-row justify-content-center  ">
             <div class=" my-5 p-5">
+                @can('accesswebmaster')
+                <div class="mb-5">
+                    <div class="">
+                        <button class="btn btn-primary">
+                            <a href="{{url('createarticle')}}">Add an article</a>
+                        </button>
+                    </div>
+                </div>
+                @endcan
                 <div class="row">
                     @foreach ($articles as $article)
                         {{-- {{dd($article->user->lastname)}} --}}
@@ -54,10 +63,11 @@
                                 <p class="card-text">{{ $article->text }} </p>
 
                                 {{-- edit et delete articles --}}
-                                {{-- @auth
+                                @can('accesswebmaster')
 
 
                                 <div class="text-center mt-3 d-flex justify-between" >
+
                                     <div class="">
                                         <button class="btn btn-primary">
                                             <a href="/editarticles/{{ $article->id }}">Edit</a>
@@ -72,7 +82,7 @@
                                     </div>
 
                                 </div>
-                                @endauth --}}
+                                @endcan
 
                             </div>
                         </div>

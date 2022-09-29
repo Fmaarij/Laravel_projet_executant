@@ -25,6 +25,11 @@ class RoleSeeder extends Seeder {
             'created_at' =>now(),
             'updated_at' => now()
         ],
+        [
+            'role_name' => 'wabmaster',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ]
        ] );
     }
 }

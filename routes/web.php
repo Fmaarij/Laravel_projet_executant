@@ -34,9 +34,11 @@ Route::get('/dashboard', function () {
 
 //articles
 Route::get('/', [ArticlesController::class,'index'])->name('articles');
-Route::get('/editarticles/{id}',[ArticlesController::class,'edit'])->name('editarticles');
-Route::PUT('/{id}/updatearticle',[ArticlesController::class,'update']);
-Route::DELETE('/{id}/deletearticle',[ArticlesController::class,'destroy']);
+Route::get('/createarticle',[ArticlesController::class,'create'])->middleware('webmasterrole')->name('createarticle');
+Route::post('/storearticle',[ArticlesController::class,'store']);
+Route::get('/editarticles/{id}',[ArticlesController::class,'edit'])->name('editarticles')->middleware('webmasterrole');
+Route::PUT('/{id}/updatearticle',[ArticlesController::class,'update'])->middleware('webmasterrole');
+Route::DELETE('/{id}/deletearticle',[ArticlesController::class,'destroy'])->middleware('webmasterrole');
 
 //users
 Route::get('/users', [RegisteredUserController::class,'index'])->middleware(['adminrole'])->name('users');

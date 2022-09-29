@@ -44,7 +44,7 @@ class UserSeeder extends Seeder {
                 'name' => 'Kadri',
                 'lastname' => 'Hamza',
                 'age' => 29,
-                'role_id' =>2,
+                'role_id' =>3,
                 'avatar_id' =>3,
                 'article_id' =>2,
                 'email' =>'kadri@gmail.com',

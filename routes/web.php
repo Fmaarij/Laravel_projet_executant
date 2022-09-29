@@ -51,7 +51,7 @@ Route::post('/storeavatar', [AvatarController::class,'store']);
 Route::get('/showavatar', [AvatarController::class,'show'])->name('showavatar');
 Route::get('/editavatar/{id}', [AvatarController::class,'edit'])->name('editavatar');
 Route::put('/{id}/updateavatar', [AvatarController::class,'update']);
-Route::delete('/{id}/delete', [AvatarController::class,'destroy']);
+Route::delete('/{id}/deleteavatar', [AvatarController::class,'destroy']);
 
 // photos
 Route::get('/photos', [PhotoController::class,'index'])->name('photos');

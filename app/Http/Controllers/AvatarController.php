@@ -120,8 +120,7 @@ class AvatarController extends Controller {
     public function destroy( $id) {
         $avatars = Avatar::find( $id );
         Storage::delete( 'public/avatar/'.$avatars->img );
-        // $avatars->delete();
-
+        $avatars->delete();
         return redirect()->back();
     }
 }

@@ -26,7 +26,7 @@
                                         src="{{ asset('storage/avatar/' . $avatar->img) }}" class="img-fluid rounded-start"
                                         alt="...">
                                     <p class="card-text">
-                                        <form action="/{{$avatar->id}}/delete" method="post" enctype="multipart/form-data">
+                                        <form action="/{{$avatar->id}}/deleteavatar" method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger rounded-pill">Delete</button>

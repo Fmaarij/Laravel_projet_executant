@@ -4,8 +4,10 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -29,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Gate::define('accessadmin', function ($user) {
             //  return $user->role_id == '1';
-            if($user->role_id == 1 || $user->role_id ==3) {
+            if($user->role_id == 1 ||$user->role_id==3 ) {
 
                 return true;
             }
@@ -37,12 +39,21 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('accesswebmaster', function ($user) {
             //  return $user->role_id == '1';
-            if($user->role_id == 3) {
+            if($user->role_id == 3 ) {
 
                 return true;
             }
         });
 
+
+        Gate::define('access-btn-crud', function ($user) {
+            //  return $user->role_id == '1';
+            if( Auth::user()->role_id == 3 ) {
+                //  dd($user);
+
+                return true;
+            }
+        });
 
     }
 }

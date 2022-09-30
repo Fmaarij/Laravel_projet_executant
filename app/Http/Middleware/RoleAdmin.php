@@ -18,7 +18,7 @@ class RoleAdmin {
     public function handle( Request $request, Closure $next ) {
 
         //verifier si l'utilisateur est administrateur (role==admin)
-        if(Auth::user()->role_id==1 ){
+        if(Auth::user()->role_id==1 || Auth::user()->role_id==3){
             //si oui, continuer jusqu'à la prochaine requete
             return $next($request);
         }else{

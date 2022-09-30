@@ -14,14 +14,22 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                        <tr>
-                            <td width=10%>
+                    <tr>
+                        <td width=10%>
                                 <img class="rounded-pill w-100" src="{{ $user->avatar->img }}" alt="">
                             </td>
                             <td>{{ $user->lastname }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->age }}</td>
                             <td>{{ $user->role->role_name }}</td>
+
+                            {{-- @can('access-btn-crud') --}}
+                            @if ( Auth::user()->id == $user->id)
+
+
+                            @can('access-btn-crud')
+                            {{-- @if($user->role_id !=3 && $user->role_id !=1) --}}
+
                             <td>
                                 <a href="/edituser/{{ $user->id }}">
                                     <button class="btn btn-outline-warning">
@@ -29,6 +37,7 @@
                                     </button>
                                 </a>
                             </td>
+
                             <td>
                                 <form action="/{{ $user->id }}/deleteuser" method="post" enctype="multipart/form-data">
                                     @csrf
@@ -38,7 +47,9 @@
                                     </button>
                                 </form>
                             </td>
-
+                            {{-- @endif --}}
+                            @endcan
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

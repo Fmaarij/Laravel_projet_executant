@@ -22,7 +22,8 @@ class RegisteredUserController extends Controller {
     */
     public function index(){
         $users = User::all();
-        return view('users.index', compact('users'));
+        // $member = User::where('role_id','=','2')->get();
+        return view('users.index', compact('users' ));
     }
 
     public function create() {
@@ -87,10 +88,11 @@ class RegisteredUserController extends Controller {
 
     public function edit( $id ) {
         $users = User::find( $id );
+
         $roles = Role::all();
         $avatars = Avatar::all();
         $articles = Articles::all();
-        return view( 'users.edit', compact( 'users', 'roles', 'avatars', 'articles' ) );
+        return view( 'users.edit', compact( 'users', 'roles', 'avatars', 'articles') );
     }
 
     public function update( Request $request, $id ) {

@@ -108,6 +108,7 @@ class AvatarController extends Controller {
     public function update( Request $request, $id ) {
         $avatars = Avatar::find( $id );
         $avatars ->avatar_name = $request->avatar_name;
+
         if ( $request->file( 'img' ) != null ) {
             Storage::delete( 'public/avatar/', $request->img );
             Storage::put( 'public/avatar/', $request->file( 'img' ) );

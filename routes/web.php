@@ -41,12 +41,12 @@ Route::PUT('/{id}/updatearticle',[ArticlesController::class,'update'])->middlewa
 Route::DELETE('/{id}/deletearticle',[ArticlesController::class,'destroy'])->middleware('webmasterrole');
 
 //users
-Route::get('/users', [RegisteredUserController::class,'index'])->middleware(['adminrole'])->name('users');
-Route::get('/createuser', [RegisteredUserController::class,'createuser'])->middleware(['adminrole'])->name('createuser');
-Route::post('/storeeuser', [RegisteredUserController::class,'storeuser'])->middleware(['adminrole']);
-Route::get('/edituser/{id}',[RegisteredUserController::class,'edit'])->middleware(['adminrole']);
-Route::PUT('/{id}/updateuser',[RegisteredUserController::class,'update'])->middleware(['adminrole']);
-Route::DELETE('/{id}/deleteuser',[RegisteredUserController::class,'destroy'])->middleware(['adminrole']);
+Route::get('/users', [RegisteredUserController::class,'index'])->middleware('adminrole')->name('users');
+Route::get('/createuser', [RegisteredUserController::class,'createuser'])->middleware('adminrole')->name('createuser');
+Route::post('/storeeuser', [RegisteredUserController::class,'storeuser'])->middleware('adminrole');
+Route::get('/edituser/{id}',[RegisteredUserController::class,'edit'])->middleware('adminrole');
+Route::PUT('/{id}/updateuser',[RegisteredUserController::class,'update'])->middleware('adminrole');
+Route::DELETE('/{id}/deleteuser',[RegisteredUserController::class,'destroy'])->middleware('adminrole');
 
 
 
